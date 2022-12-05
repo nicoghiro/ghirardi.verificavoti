@@ -168,6 +168,58 @@ namespace ghirardi.verifica
 
         private void button6_Click(object sender, EventArgs e)
         {
+            for(int i = 0; i < cont1 -1; i++)
+            {
+                int anno = int.Parse(Convert.ToString(disponibili[i].Data.Year));
+                int mese = int.Parse(Convert.ToString(disponibili[i].Data.Month));
+                int giorno = int.Parse(Convert.ToString(disponibili[i].Data.Day));
+                for (int j = 0; i < cont1; i++)
+                {
+                    int anno2 = int.Parse(Convert.ToString(disponibili[j].Data.Year));
+                    int mese2 = int.Parse(Convert.ToString(disponibili[j].Data.Month));
+                    int giorno2 = int.Parse(Convert.ToString(disponibili[j].Data.Day));
+                    if (anno > anno2)
+                    {
+                        verifica temp = disponibili[j];
+                        disponibili[i] = disponibili[j];
+                        disponibili[j] = temp;
+                    }
+                    else
+                    {
+                        if (mese > mese2)
+                        {
+                            verifica temp = disponibili[j];
+                            disponibili[i] = disponibili[j];
+                            disponibili[j] = temp;
+                        }
+                        else
+                        {
+                            if (giorno > giorno2)
+                            {
+                                verifica temp = disponibili[j];
+                                disponibili[i] = disponibili[j];
+                                disponibili[j] = temp;
+                            }
+                        }
+                    }
+                }
+            }
+            listView1.Clear();
+            string[] intestazione = new string[] { "ID", "NOME", "VOTO", "DATA" };
+
+            for (int i = 0; i < intestazione.Length; i++)
+            {
+                listView1.Columns.Add(intestazione[i]);
+            }
+
+            verifica[] prodotti = ele.Registro;
+
+            for (int i = 0; i < cont1; i++)
+            {
+
+                ListViewItem riga = new ListViewItem(disponibili[i].ToString().Split(';'));
+                listView1.Items.Add(riga);
+            }
 
         }
     }

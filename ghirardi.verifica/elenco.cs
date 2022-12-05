@@ -14,6 +14,13 @@ namespace ghirardi.verifica
         private verifica[] registro= new verifica[maxlengt];
         private int currentLenght=0;
         private int checkid = 0;
+        public int CurrentLenght
+        {
+            get
+            {
+                return currentLenght;
+            }
+        }
         public int Checkid
         {
             get
